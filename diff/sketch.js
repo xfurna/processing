@@ -3,8 +3,7 @@ var next;
 var Da=1;
 var Db=0.5;
 var k=0.062;
-var feed=0.0545;
-
+var feed=0.0555;
 
 function setup(){
     createCanvas(200,200);
@@ -21,9 +20,8 @@ function setup(){
             // grid[i][j]={a:1,b:0};
         }
     }
-    for(var x=100;x<110;x++){
-        for(var y=90;y<110;y++)
-        if(x+y)
+    for(var x=88;x<112;x++){
+        for(var y=88;y<112;y++)
         grid[x][y].b=1;
     }
 }
@@ -38,6 +36,8 @@ function draw(){
             next[i][j].a=a + Da*lapA(i,j) - a*b*b + feed*(1-a);
             next[i][j].b=b + Db*lapB(i,j) + a*b*b - (k+feed)*b;
         }
+        if(i>width/2)
+        feed=0.0484
     }
 
 
@@ -48,8 +48,8 @@ function draw(){
             var c = floor((next[i][j].a - next[i][j].b) * 255);
             c = constrain(c, 0, 255);
             pixels[pix + 0] = (1+cos(i))*1;
-            pixels[pix + 1] = (1+cos(j*j*i))*222;
-            pixels[pix + 2] = (1+sin(j*i*i))*100;
+            pixels[pix + 1] = (1+sin(i*j))*5;
+            pixels[pix + 2] = (1+cos(j*i))*100;
             pixels[pix + 3] = c;
         }
     }
