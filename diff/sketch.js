@@ -2,8 +2,10 @@ var grid;
 var next;
 var Da=1;
 var Db=0.5;
-var k=0.062;
-var feed=0.0555;
+
+
+var k=0.0549;
+var feed=0.0767;
 
 function setup(){
     createCanvas(200,200);
@@ -36,8 +38,10 @@ function draw(){
             next[i][j].a=a + Da*lapA(i,j) - a*b*b + feed*(1-a);
             next[i][j].b=b + Db*lapB(i,j) + a*b*b - (k+feed)*b;
         }
-        if(i>width/2)
-        feed=0.0484
+        if(i>width/2){
+            feed=0.055;
+            k=0.062;
+        }
     }
 
 
